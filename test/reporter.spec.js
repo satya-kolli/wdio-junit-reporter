@@ -60,7 +60,7 @@ describe('junit reporter', () => {
             it('should have content for skipped test', () => {
                 xml2Content.should.containEql(
                 // eslint-disable-next-line
-`    <testcase classname="phantomjs.some_special_spec_title" name="skipped_test" time="1">`)
+`    <testcase classname="phantomjs.some_special_spec_title" name="Skipped test" time="1">`)
             })
 
             it('should have expected content', () => {
@@ -72,7 +72,7 @@ describe('junit reporter', () => {
                 )
                 xml1Content.should.containEql(
                 // eslint-disable-next-line
-`    <testcase classname="phantomjs.some_other_foobar_test" name="that_is_a_test" time="1">
+`    <testcase classname="phantomjs.some_other_foobar_test" name="that is a test" time="1">
       <system-out>
         <![CDATA[
 COMMAND: POST /path/to/command - "some payload"
@@ -171,7 +171,7 @@ with new line
         })
 
         it('should include ** in spec title', () => {
-            xml2Content.should.containEql('<testsuite name="some_special_**_spec_title"')
+            xml2Content.should.containEql('<testsuite name="some special ** spec title"')
         })
     })
 
@@ -193,7 +193,7 @@ with new line
             rimraf.sync(outputDir)
         })
 
-        it('should have package name in classname', () => {
+        it('should have package name in classname 198', () => {
             xml1Content.should.containEql('classname="phantomjs-____O.o____.some_foobar_test"')
         })
     })
