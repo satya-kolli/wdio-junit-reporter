@@ -190,7 +190,7 @@ var JunitReporter = function (_events$EventEmitter) {
 
                                     var suite = spec.suites[suiteKey];
                                     var suiteName = this.prepareName(suite.title);
-                                    var testSuite = builder.testSuite().name(suiteName.join(' ')).timestamp(suite.start).time(suite.duration / 1000).property('specId', specId).property('suiteName', suite.title).property('capabilities', capabilities.sanitizedCapabilities).property('file', spec.files[0].replace(process.cwd(), '.'));
+                                    var testSuite = builder.testSuite().name(suiteName.join(' ')).timestamp(suite.start).time(suite.duration / 1000).property('specId', specId).property('suiteName', suiteName.join(' ')).property('capabilities', capabilities.sanitizedCapabilities).property('file', spec.files[0].replace(process.cwd(), '.'));
 
                                     var _iteratorNormalCompletion5 = true;
                                     var _didIteratorError5 = false;
