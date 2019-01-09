@@ -145,7 +145,7 @@ var JunitReporter = function (_events$EventEmitter) {
 
             return name.split(this.suiteNameRegEx).filter(function (item) {
                 return item && item.length;
-            });
+            }).join(' ');
         }
     }, {
         key: 'prepareXml',
@@ -190,7 +190,7 @@ var JunitReporter = function (_events$EventEmitter) {
 
                                     var suite = spec.suites[suiteKey];
                                     var suiteName = this.prepareName(suite.title);
-                                    var testSuite = builder.testSuite().name(suiteName.join(' ')).timestamp(suite.start).time(suite.duration / 1000).property('specId', specId).property('suiteName', suiteName.join(' ')).property('capabilities', capabilities.sanitizedCapabilities).property('file', spec.files[0].replace(process.cwd(), '.'));
+                                    var testSuite = builder.testSuite().name(suiteName).timestamp(suite.start).time(suite.duration / 1000).property('specId', specId).property('suiteName', suiteName).property('capabilities', capabilities.sanitizedCapabilities).property('file', spec.files[0].replace(process.cwd(), '.'));
 
                                     var _iteratorNormalCompletion5 = true;
                                     var _didIteratorError5 = false;
@@ -203,8 +203,8 @@ var JunitReporter = function (_events$EventEmitter) {
                                             if (testKey !== 'undefined') {
                                                 // fix cucumber hooks crashing reporter
                                                 var test = suite.tests[testKey];
-                                                var testName = this.prepareName(test.title).join(' ');
-                                                var testCase = testSuite.testCase().className(packageName + '.' + suiteName.join('_')).name(testName).time(test.duration / 1000);
+                                                var testName = this.prepareName(test.title);
+                                                var testCase = testSuite.testCase().className(packageName + '.' + suiteName).name(testName).time(test.duration / 1000);
 
                                                 if (test.state === 'pending') {
                                                     testCase.skipped();
